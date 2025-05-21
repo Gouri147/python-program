@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
+                        url('https://media.istockphoto.com/id/606230424/photo/agriculture.jpg?s=612x612&w=0&k=20&c=byKybbMGCEAgdgfgyvUXC2ttl_8nbfc7JKpKFYg6rw4=') no-repeat center center fixed;
+            background-size: cover;
+            animation: slideshow 16s infinite alternate;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        @keyframes slideshow {
+            0% {
+                background-image: url('https://media.istockphoto.com/id/606230424/photo/agriculture.jpg?s=612x612&w=0&k=20&c=byKybbMGCEAgdgfgyvUXC2ttl_8nbfc7JKpKFYg6rw4=');
+            }
+            50% {
+                background-image: url('https://cdn.wallpapersafari.com/61/31/Mo8nwL.jpg');
+            }
+            100% {
+                background-image: url('https://media.istockphoto.com/id/606230424/photo/agriculture.jpg?s=612x612&w=0&k=20&c=byKybbMGCEAgdgfgyvUXC2ttl_8nbfc7JKpKFYg6rw4=');
+            }
+        }
+
+        h1 {
+            text-align: center;
+            padding: 30px 0;
+            color: #2e7d32;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: rgba(255,255,255,0.9);
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <h1><u>Crop Yield & Fertilizer Prediction</u></h1>
+    <form method="post" action="/predict">
+        <label>Temperature: <input name="temperature" required></label>
+        <label>Humidity: <input name="humidity" required></label>
+        <label>Moisture: <input name="moisture" required></label>
+        <label>Soil Type:
+            <select name="soil_type" required>
+                {% for soil in soil_types %}
+                <option value="{{ soil }}">{{ soil }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Crop Type:
+            <select name="crop_type" required>
+                {% for crop in crop_types %}
+                <option value="{{ crop }}">{{ crop }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>Nitrogen: <input name="nitrogen" required></label>
+        <label>Phosphorous: <input name="phosphorous" required></label>
+        <label>Potassium: <input name="potassium" required></label>
+        <label>Rainfall: <input name="rainfall" required></label>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>

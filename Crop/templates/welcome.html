@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Crop Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://media.istockphoto.com/id/606230424/photo/agriculture.jpg?s=612x612&w=0&k=20&c=byKybbMGCEAgdgfgyvUXC2ttl_8nbfc7JKpKFYg6rw4=')
+                        no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #f0f0f0;
+        }
+
+        .start-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .start-button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Smart Crop Predictor</h1>
+    <p>Predict the best crop yield and ideal fertilizer in seconds</p>
+    <form action="{{ url_for('home') }}">
+        <button class="start-button" type="submit">Start Predicting</button>
+    </form>
+</body>
+</html>

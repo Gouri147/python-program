@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Prediction Results</h2>
+    <p><strong>Predicted Yield:</strong> {{ predicted_yield }} q/ha</p>
+    <p><strong>Recommended Fertilizer:</strong> {{ fertilizer }}</p>
+    <a href="/">Try Again</a>
+</body>
+</html>
